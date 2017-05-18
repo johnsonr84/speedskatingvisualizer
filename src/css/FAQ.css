@@ -10,6 +10,11 @@
   margin-left: 1rem;
 }
 
+.pageFAQ p {
+  color: black;
+  font-size: 2em;
+}
+
 .tableCont {
   display: flex;
   flex-direction: row;

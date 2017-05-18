@@ -10,24 +10,37 @@
   text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }
 
-h4 {
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: 'Audiowide', cursive;
-  font-size: 16px;
-  color: white;
+.app-sidebar p {
+  color: black;
+  font-size: 1.5em;
 }
 
 .home-page1, .results-page1, .skaters-page1, .records-page1, .season-page1, .contact-page1, .faq-page1 {
   width: 14rem;
   height: auto;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-family: 'Audiowide', cursive;
   background-color: inherit;
+  border: 0.1rem solid grey;
   align-content: center;
   align-items: center;
   text-align: center;
   width: 14rem;
-  height: 100%;
+  height: auto;
+}
+
+.social-media {
+  display: flex;
+  font-size: 2.5rem;
+  cursor: pointer;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.app-sidebar :hover {
+  background-color: #6AB0FF;
+  color: white;
 }

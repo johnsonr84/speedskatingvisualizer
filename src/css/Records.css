@@ -6,19 +6,9 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
-
     padding: 1rem;
     margin-left: 1rem;
     color: black;
-}
-
-.pageRecords h1 {
-  letter-spacing: 0.5rem;
-  font-size: 40px;
-  font-family: 'Audiowide', cursive;
-  background: -webkit-linear-gradient(right, lightgrey, black);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .recordData td {
@@ -27,5 +17,15 @@
   justify-content: flex-start;
   align-items: center;
   margin-right: 4rem;
+  font-size: 3rem;
+}
 
+.pageRecords select {
+  background-color: #599CED;
+  font-family: 'Audiowide', cursive;
+  font-size: 3rem;
+  color: white;
+  border-radius: 0.5rem;
+  border: 0.2rem solid black;
+  cursor: pointer;
 }

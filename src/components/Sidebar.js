@@ -80,6 +80,14 @@ class Sidebar extends React.Component {
         >
           <p>FAQ</p>
         </div>
+        <div className="social-media">
+          <div
+            className="facebook"
+            href="https://www.facebook.com/rob.johnson.9615"
+          >
+            Facebook
+          </div>
+        </div>
       </div>
     );
   }
