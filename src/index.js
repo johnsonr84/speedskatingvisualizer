@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
@@ -18,7 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Page: "records"
+      Page: "skaters"
     };
   }
 
@@ -89,9 +89,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(
-  <BrowserRouter basename="/">
-    <App />
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
