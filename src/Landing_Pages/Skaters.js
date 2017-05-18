@@ -86,7 +86,7 @@ class Skaters extends Component {
           </div>
           <div className="gender">
             <label>Ladies/Men </label>
-            <select name="g">
+            <select onChange={this.handleCountryChange} name="g">
               <option value="9999" selected="selected">ALL</option>
               <option value="0">Ladies</option>
               <option value="1">Men</option>

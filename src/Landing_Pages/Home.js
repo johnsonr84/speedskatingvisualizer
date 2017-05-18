@@ -24,6 +24,10 @@ class Home extends Component {
     this.handleTrackChange = this.handleTrackChange.bind(this);
   }
 
+  componentWillMount() {
+    this.getCompetitions("99");
+  }
+
   handleTrackChange(event) {
     let track = event.target.value;
     this.setState({ ...track });
