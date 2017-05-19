@@ -1,7 +1,30 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../css/Skaters.css";
 
 class Skaters extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleCountryChange = this.handleCountryChange.bind(this);
+  }
+
+  handleCountryChange(event) {
+    let country = event.target.value;
+    this.getCountry(country);
+  }
+
+  getCountry(country) {
+    axios
+      .get(`http://speedskatingresults.com/api/json/country_records.php`)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="pageSkaters">
@@ -9,11 +32,11 @@ class Skaters extends Component {
         <form className="skaterSearch" action="index.php?=21" method="post">
           <div className="country ">
             <label>Country </label>
-            <select name="n">
+            <select onChange={this.handleCountryChange} name="n">
               <option value="9999">ALL</option>
               <option value="47">ARG-Argentina</option>
               <option value="55">ARM-Armenia</option>
-              <option value="1">AUS-Australia</option>
+              <option value="AUS">AUS-Australia</option>
               <option value="2">AUT-Austria</option>
               <option value="71">AZE-Azerbaijan</option>
               <option value="3">BEL-Belgium</option>
@@ -86,19 +109,19 @@ class Skaters extends Component {
           </div>
           <div className="gender">
             <label>Ladies/Men </label>
-            <select onChange={this.handleCountryChange} name="g">
-              <option value="9999" selected="selected">ALL</option>
+            <select defaultValue="ALL" name="g">
+              <option value="9999">ALL</option>
               <option value="0">Ladies</option>
               <option value="1">Men</option>
             </select>
           </div>
           <div className="given">
             <label>Given Name </label>
-            <input type="text" name="fn" value maxlength="60" size="40" />
+            <input type="text" name="fn" value maxLength="60" size="40" />
           </div>
           <div className="family">
             <label>Family Name </label>
-            <input type="text" name="ln" value maxlength="60" size="40" />
+            <input type="text" name="ln" value maxLength="60" size="40" />
           </div>
           <div className="submit">
             <button type="submit" value="Select">Submit</button>
