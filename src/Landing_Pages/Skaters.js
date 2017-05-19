@@ -6,19 +6,47 @@ class Skaters extends Component {
   constructor(props) {
     super(props);
 
-    this.handleCountryChange = this.handleCountryChange.bind(this);
+    this.state = {
+      country: "",
+      gender: "",
+      familyName: "",
+      givenName: ""
+    };
+
+    this.handleCountry = this.handleCountry.bind(this);
+    this.handleGender = this.handleGender.bind(this);
+    this.handleGivenName = this.handleGivenName.bind(this);
+    this.handleFamilyName = this.handleFamilyName.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleCountryChange(event) {
-    let country = event.target.value;
-    this.getCountry(country);
+  handleCountry(event) {
+    this.setState({ country: event.target.value });
+  }
+  handleGender(event) {
+    this.setState({ gender: event.target.value });
+  }
+  handleGivenName(event) {
+    this.setState({ givenName: event.target.value });
+  }
+  handleFamilyName(event) {
+    this.setState({ familyName: event.target.value });
   }
 
-  getCountry(country) {
+  handleSubmit(event) {
+    event.preventDefault();
+    let { country, gender, givenName, familyName } = this.state;
+    this.getSkaters(country, gender, givenName, familyName);
+    console.log(this.state);
+  }
+
+  getSkaters(country, gender, givenName, familyName) {
     axios
-      .get(`http://speedskatingresults.com/api/json/country_records.php`)
+      .get(
+        `http://speedskatingresults.com/api/json/skater_lookup?country=${country}&gender=${gender}&givenname=${givenName}&familyname=${familyName}`
+      )
       .then(response => {
-        console.log(response);
+        this.setState({ skaters: response.data.skaters });
       })
       .catch(function(error) {
         console.log(error);
@@ -29,14 +57,14 @@ class Skaters extends Component {
     return (
       <div className="pageSkaters">
         <h1>SKATER SEARCH</h1>
-        <form className="skaterSearch" action="index.php?=21" method="post">
+        <form className="skaterSearch" onSubmit={this.handleSubmit}>
           <div className="country ">
             <label>Country </label>
-            <select onChange={this.handleCountryChange} name="n">
+            <select onChange={this.handleCountry}>
               <option value="9999">ALL</option>
               <option value="47">ARG-Argentina</option>
               <option value="55">ARM-Armenia</option>
-              <option value="AUS">AUS-Australia</option>
+              <option value="1">AUS-Australia</option>
               <option value="2">AUT-Austria</option>
               <option value="71">AZE-Azerbaijan</option>
               <option value="3">BEL-Belgium</option>
@@ -109,7 +137,7 @@ class Skaters extends Component {
           </div>
           <div className="gender">
             <label>Ladies/Men </label>
-            <select defaultValue="ALL" name="g">
+            <select defaultValue="ALL" onChange={this.handleGender}>
               <option value="9999">ALL</option>
               <option value="0">Ladies</option>
               <option value="1">Men</option>
@@ -117,16 +145,19 @@ class Skaters extends Component {
           </div>
           <div className="given">
             <label>Given Name </label>
-            <input type="text" name="fn" value maxLength="60" size="40" />
+            <input type="text" onChange={this.handleGivenName} />
           </div>
           <div className="family">
             <label>Family Name </label>
-            <input type="text" name="ln" value maxLength="60" size="40" />
+            <input type="text" onChange={this.handleFamilyName} />
           </div>
-          <div className="submit">
-            <button type="submit" value="Select">Submit</button>
+          <div className="skaterSearch">
+            <input className="submit" type="submit" value="Search" />
           </div>
         </form>
+        {/*{
+           this.state.skaters.map..
+         }*/}
       </div>
     );
   }

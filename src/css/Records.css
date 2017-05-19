@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-
+  font-family: arial;
   padding: 1rem;
   margin-left: 1rem;
   color: black;
@@ -29,7 +29,7 @@ tr:nth-child(even){
 
 .pageRecords select {
   background-color: #599CED;
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', arial;
   font-size: 3rem;
   color: white;
   border-radius: 0.5rem;
@@ -39,7 +39,7 @@ tr:nth-child(even){
 
 .table h2 {
   font-size: 3rem;
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', arial;
 }
 
 .table td, th {
