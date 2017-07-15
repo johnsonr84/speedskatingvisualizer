@@ -18,7 +18,11 @@
 .home-page1, .results-page1, .skaters-page1, .records-page1, .season-page1, .contact-page1, .faq-page1 {
   width: 14rem;
   height: auto;
+<<<<<<< HEAD
   font-size: 1.5rem;
+=======
+  font-size: 2.5rem;
+>>>>>>> b477077024f2c5e014d4d363a30a7a852c084b13
   font-family: 'Audiowide', arial;
   background-color: inherit;
   border: 0.1rem solid grey;

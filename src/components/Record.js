@@ -5,16 +5,14 @@ class Record extends Component {
   render() {
     let { record } = this.props;
     return (
-      <div className="recordData">
-        <tr>
-          <td>{record.date}</td>
-          <td>{record.location}</td>
-          <td>{record.skater.country}</td>
-          <td>{record.skater.givenname} {record.skater.familyname}</td>
-          <td>{record.time}</td>
-          <td>{record.distance}</td>
-        </tr>
-      </div>
+      <tr className="recordData">
+        <td>{record.distance}</td>
+        <td>{record.time}</td>
+        <td>{record.skater.givenname} {record.skater.familyname}</td>
+        <td>{record.skater.country}</td>
+        <td>{record.location}</td>
+        <td>{record.date}</td>
+      </tr>
     );
   }
 }

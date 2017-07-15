@@ -3,17 +3,6 @@ import "../css/Records.css";
 import axios from "axios";
 import RecordTable from "../components/RecordTable";
 
-// class Record extends Component {
-//   render() {
-//     let { Record } = this.props;
-//     return (
-//       <tr>
-//         <td>{record.name}</td>
-//       </tr>
-//     );
-//   }
-// }
-
 class Records extends Component {
   constructor(props) {
     super(props);
@@ -24,25 +13,43 @@ class Records extends Component {
     this.handleRecordChange = this.handleRecordChange.bind(this);
   }
 
+  componentWillMount() {
+    this.getRecords("world_records");
+  }
+
   handleRecordChange(event) {
     let record = event.target.value;
     this.setState({ ...record });
     this.getRecords(record);
   }
 
-  getRecords(Records) {
+  getRecords(records) {
     axios
-      .get(`http://speedskatingresults.com/api/json/olympic_records`)
+      .get(`http://speedskatingresults.com/api/json/${records}.php`)
       .then(response => {
-        console.log(response.data.records);
+        // console.log(response.data.records);
         this.setState({ records: response.data.records });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
   }
 
   render() {
     const { records } = this.state;
-    const ladiesRecords = records.filter(record => record.gender === "f");
-    const mensRecords = records.filter(record => record.gender === "m");
+    const ladiesRecords = records.filter(record => {
+      return record.gender === "f" && record.age === "sr";
+    });
+    const juniorLadiesRecords = records.filter(record => {
+      return record.gender === "f" && record.age === "jr";
+    });
+    const mensRecords = records.filter(record => {
+      return record.gender === "m" && record.age === "sr";
+    });
+    const juniorMensRecords = records.filter(record => {
+      return record.gender === "m" && record.age === "jr";
+    });
+
     return (
       <div className="pageRecords">
         <h1>RECORDS</h1>
@@ -50,8 +57,10 @@ class Records extends Component {
           <option value="world_records">World Records</option>
           <option value="olympic_records">Olympic Records</option>
         </select>
-        <RecordTable title="LADIES" records={ladiesRecords} />
+        <RecordTable title="WOMEN" records={ladiesRecords} />
         <RecordTable title="MEN" records={mensRecords} />
+        <RecordTable title="JUNIOR WOMEN" records={juniorLadiesRecords} />
+        <RecordTable title="JUNIOR MEN" records={juniorMensRecords} />
       </div>
     );
   }

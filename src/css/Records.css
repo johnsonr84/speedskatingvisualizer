@@ -1,31 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Faster+One');
 
 .pageRecords {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 1rem;
-    margin-left: 1rem;
-    color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: arial;
+  padding: 1rem;
+  margin-left: 1rem;
+  color: black;
+}
+
+.recordData tr {
+  margin: 3px;
+}
+
+tr:nth-child(even){
+  background-color: lightgrey;
 }
 
 .recordData td {
-  float: right;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  padding: 5px;
   margin-right: 4rem;
   font-size: 3rem;
 }
 
+
 .pageRecords select {
   background-color: #599CED;
+<<<<<<< HEAD
   font-family: 'Audiowide', cursive;
   font-size: 2rem;
+=======
+  font-family: 'Audiowide', arial;
+  font-size: 3rem;
+>>>>>>> b477077024f2c5e014d4d363a30a7a852c084b13
   color: white;
   border-radius: 0.5rem;
   border: 0.2rem solid black;
   cursor: pointer;
+}
+
+.table h2 {
+  font-size: 3rem;
+  font-family: 'Audiowide', arial;
+}
+
+.table td, th {
+  padding: 1rem 4rem 1rem 1rem;
+}
+
+.tableHeader th {
+  font-size: 2.5rem;
+  text-align: left;
 }
